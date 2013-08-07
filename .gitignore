@@ -1,0 +1,16 @@
+/.idea/
+/nbproject/
+/!_info/*
+/app/bootstrap.php.cache
+/app/config/parameters.yml
+/app/check.php
+/app/SymfonyRequirements.php
+/var/*
+/bin/doctrine*
+/vendor/
+/web/bundles/
+/composer.lock
+/composer.phar
+!*.gitkeep
+!*.gitignore
+*.php~
