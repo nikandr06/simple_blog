@@ -36,8 +36,8 @@ class BlogService
     public function __construct(EntityManager $em)
     {
         $this->em = $em;
-        $this->articlesRepo = $em->getRepository('SimpleBlogBlogBundle:Article'); // @todo конфиг репы как у FOSUB
-        $this->tagsRepo = $em->getRepository('SimpleBlogBlogBundle:Tag'); // @todo конфиг репы как у FOSUB
+        $this->articlesRepo = $em->getRepository('DmitxeBlogBundle:Article'); // @todo конфиг репы как у FOSUB
+        $this->tagsRepo = $em->getRepository('DmitxeBlogBundle:Tag'); // @todo конфиг репы как у FOSUB
 
         $this->articlesPerPage = 2; // @todo сделать кол-во статей на страницу через конфиг.
     }

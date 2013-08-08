@@ -1,0 +1,3 @@
+dmitxe_demo_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: DmitxeDemoBundle:Default:index }

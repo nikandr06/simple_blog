@@ -1,3 +1,0 @@
-simpleblog_site_index:
-    path: /
-    defaults: { _controller: SimpleBlogSiteBundle:Page:index }

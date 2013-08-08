@@ -30,14 +30,14 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Sonata\IntlBundle\SonataIntlBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
-            new Acme\HelloBundle\AcmeHelloBundle(),
             new SmartCore\Bundle\HtmlBundle\HtmlBundle(),
             new SmartCore\Bundle\BlogBundle\SmartBlogBundle(),
-            new SimpleBlog\SiteBundle\SimpleBlogSiteBundle(),
-            new SimpleBlog\UserBundle\SimpleBlogUserBundle(),
-            new SimpleBlog\BlogBundle\SimpleBlogBlogBundle(),
-            new SimpleBlog\FixturesBundle\SimpleBlogFixturesBundle(),
+            new Dmitxe\SiteBundle\DmitxeSiteBundle(),
+            new Dmitxe\UserBundle\DmitxeUserBundle(),
+            new Dmitxe\BlogBundle\DmitxeBlogBundle(),
+            new Dmitxe\FixturesBundle\DmitxeFixturesBundle(),
             new SmartCore\Bundle\MediaBundle\SmartMediaBundle(),
+            new Dmitxe\DemoBundle\DmitxeDemoBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
