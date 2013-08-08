@@ -32,7 +32,7 @@ class ArticleController extends Controller
         $articleService = $this->get('smart_blog.article');
 
         $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter($articleService->getFindByCategoryQuery()));
-        $pagerfanta->setMaxPerPage($articleService->getItemsPerPage());
+        $pagerfanta->setMaxPerPage($articleService->getItemsCountPerPage());
 
         try {
             $pagerfanta->setCurrentPage($page);
@@ -47,7 +47,7 @@ class ArticleController extends Controller
 
     /**
      * @param Request $request
-     * @param integer $id
+     * @param int $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function editAction(Request $request, $id)
@@ -61,6 +61,7 @@ class ArticleController extends Controller
             if ($form->isValid()) {
                 /** @var \SmartCore\Bundle\BlogBundle\Model\ArticleInterface $article */
                 $article = $form->getData();
+                $article->setUpdated();
 
                 /** @var \Doctrine\ORM\EntityManager $em */
                 $em = $this->getDoctrine()->getManager();

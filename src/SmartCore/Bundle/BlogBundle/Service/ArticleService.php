@@ -2,33 +2,23 @@
 
 namespace SmartCore\Bundle\BlogBundle\Service;
 
-use Doctrine\ORM\EntityRepository;
 use SmartCore\Bundle\BlogBundle\Model\ArticleInterface;
 use SmartCore\Bundle\BlogBundle\Model\CategoryInterface;
 use SmartCore\Bundle\BlogBundle\Model\TagInterface;
+use SmartCore\Bundle\BlogBundle\Repository\ArticleRepositoryInterface;
 
-class ArticleService
+class ArticleService extends AbstractBlogService
 {
-    /**
-     * @var \SmartCore\Bundle\BlogBundle\Repository\ArticleRepository
-     */
-    protected $articlesRepo;
-
-    /**
-     * @var integer
-     */
-    protected $itemsPerPage;
-
     /**
      * Constructor.
      *
-     * @param EntityRepository $articlesRepo
+     * @param \SmartCore\Bundle\BlogBundle\Repository\ArticleRepository $articlesRepo
      * @param int $itemsPerPage
      */
-    public function __construct(EntityRepository $articlesRepo, $itemsPerPage = 10)
+    public function __construct(ArticleRepositoryInterface $articlesRepo, $itemsPerPage = 10)
     {
         $this->articlesRepo = $articlesRepo;
-        $this->itemsPerPage = $itemsPerPage;
+        $this->setItemsCountPerPage($itemsPerPage);
     }
 
     /**
@@ -36,11 +26,13 @@ class ArticleService
      */
     public function create()
     {
-        return new $this->articlesRepo->getClassName();
+        $class = $this->articlesRepo->getClassName();
+
+        return new $class();
     }
     
     /**
-     * @param integer $id
+     * @param int $id
      * @return ArticleInterface|null
      */
     public function get($id)
@@ -49,17 +41,9 @@ class ArticleService
     }
 
     /**
-     * @return integer
-     */
-    public function getItemsPerPage()
-    {
-        return $this->itemsPerPage;
-    }
-
-    /**
      * @param CategoryInterface $category
-     * @param integer|null $limit
-     * @param integer|null $offset
+     * @param int|null $limit
+     * @param int|null $offset
      * @return ArticleInterface[]|null
      */
     public function getByCategory(CategoryInterface $category = null, $limit = null, $offset = null)
@@ -78,8 +62,8 @@ class ArticleService
 
     /**
      * @param TagInterface $tag
-     * @param integer|null $limit
-     * @param integer|null $offset
+     * @param int|null $limit
+     * @param int|null $offset
      * @return ArticleInterface[]|null
      *
      * @todo постраничность.
@@ -90,9 +74,9 @@ class ArticleService
     }
 
     /**
-     * @param integer|null $year
-     * @param integer|null $month
-     * @param integer|null $day
+     * @param int|null $year
+     * @param int|null $month
+     * @param int|null $day
      * @return ArticleInterface[]|null
      */
     public function getByDate($year = null, $month = null, $day = null)
@@ -111,7 +95,7 @@ class ArticleService
 
     /**
      * @param CategoryInterface $category
-     * @return integer
+     * @return int
      */
     public function getCountByCategory(CategoryInterface $category = null)
     {
@@ -119,13 +103,13 @@ class ArticleService
     }
 
     /**
-     * @param integer|null $limit
+     * @param int|null $limit
      * @return ArticleInterface[]|null
      */
     public function getLast($limit = 10)
     {
         if (!$limit) {
-            $limit = $this->itemsPerPage;
+            $limit = $this->getItemsCountPerPage();
         }
 
         return $this->articlesRepo->findLast($limit);

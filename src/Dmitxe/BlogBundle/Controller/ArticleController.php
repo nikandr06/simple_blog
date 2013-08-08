@@ -15,9 +15,7 @@ class ArticleController extends BaseArticleController
      */
     public function createAction(Request $request)
     {
-        $articleService = $this->get('smart_blog.article');
-
-        $article = $articleService->create();
+        $article = $this->get('smart_blog.article')->create();
 
         $form = $this->createForm(new ArticleFormType(get_class($article)), $article);
 

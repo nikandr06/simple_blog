@@ -9,7 +9,7 @@ class TagRepository extends EntityRepository
 {
     /**
      * @param TagInterface $tag
-     * @return integer
+     * @return int
      *
      * @todo возможность выбора по нескольким тэгам.
      */
@@ -20,6 +20,7 @@ class TagRepository extends EntityRepository
             FROM {$this->_entityName} AS t
             JOIN t.articles AS a
             WHERE t = :tag
+            AND a.enabled = true
         ")->setParameter('tag', $tag);
 
         return $query->getSingleScalarResult();
@@ -27,7 +28,7 @@ class TagRepository extends EntityRepository
 
     /**
      * @param TagInterface $tag
-     * @return integer
+     * @return int
      *
      * @todo возможность выбора по нескольким тэгам.
      * @todo убрать в репу TagRepository

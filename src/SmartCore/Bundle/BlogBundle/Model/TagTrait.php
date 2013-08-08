@@ -4,6 +4,9 @@ namespace SmartCore\Bundle\BlogBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
+/**
+ * @todo разобраться с инкрементами, притоме надо учесть, что если статья удаляется или деактивируется, тогда декрементить все счетчики тэгов.
+ */
 trait TagTrait
 {
     /**

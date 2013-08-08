@@ -4,29 +4,25 @@ namespace SmartCore\Bundle\BlogBundle\Service;
 
 use Doctrine\ORM\EntityRepository;
 use SmartCore\Bundle\BlogBundle\Model\TagInterface;
+use SmartCore\Bundle\BlogBundle\Repository\ArticleRepositoryInterface;
 
-class TagService
+class TagService extends AbstractBlogService
 {
-    /**
-     * @var \SmartCore\Bundle\BlogBundle\Repository\ArticleRepository
-     */
-    protected $articlesRepo;
-
     /**
      * @var \SmartCore\Bundle\BlogBundle\Repository\TagRepository
      */
     protected $tagsRepo;
 
     /**
-     * @param EntityRepository $articlesRepo
-     * @param EntityRepository $tagsRepo
+     * @param \SmartCore\Bundle\BlogBundle\Repository\ArticleRepository $articlesRepo
+     * @param \SmartCore\Bundle\BlogBundle\Repository\TagRepository $tagsRepo
      * @param int $itemsPerPage
      */
-    public function __construct(EntityRepository $articlesRepo, EntityRepository $tagsRepo, $itemsPerPage = 10)
+    public function __construct(ArticleRepositoryInterface $articlesRepo, EntityRepository $tagsRepo, $itemsPerPage = 10)
     {
         $this->articlesRepo = $articlesRepo;
         $this->tagsRepo     = $tagsRepo;
-        $this->itemsPerPage = $itemsPerPage;
+        $this->setItemsCountPerPage($itemsPerPage);
     }
 
     /**
@@ -40,7 +36,7 @@ class TagService
 
     /**
      * @param TagInterface $tag
-     * @return integer
+     * @return int
      *
      * @todo возможность выбора по нескольким тэгам.
      */
@@ -78,13 +74,5 @@ class TagService
         }
 
         return $this->tagsRepo->findAll();
-    }
-
-    /**
-     * @return int
-     */
-    public function getItemsPerPage()
-    {
-        return $this->itemsPerPage;
     }
 }

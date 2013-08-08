@@ -6,7 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @UniqueEntity(fields={"slug"}, message="Статья с таким сегментом URI уже существует.")
@@ -65,7 +64,6 @@ abstract class Article implements ArticleInterface
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @Gedmo\Timestampable(on="update")
      */
     protected $updated_at;
 
@@ -165,7 +163,7 @@ abstract class Article implements ArticleInterface
     }
 
     /**
-     * @param boolean $enabled
+     * @param bool $enabled
      * @return $this
      */
     public function setEnabled($enabled)
@@ -176,7 +174,7 @@ abstract class Article implements ArticleInterface
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getEnabled()
     {
@@ -227,6 +225,16 @@ abstract class Article implements ArticleInterface
     public function getUpdatedAt()
     {
         return $this->updated_at;
+    }
+
+    /**
+     * @return $this
+     */
+    public function setUpdated()
+    {
+        $this->updated_at = new \DateTime();
+
+        return $this;
     }
 
     /**

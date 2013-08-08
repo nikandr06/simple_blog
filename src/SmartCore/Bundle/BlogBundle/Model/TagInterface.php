@@ -15,7 +15,7 @@ interface TagInterface
     public function decrement();
 
     /**
-     * @return integer
+     * @return int
      */
     public function getId();
 
@@ -25,7 +25,7 @@ interface TagInterface
     public function getSlug();
 
     /**
-     * @param mixed $slug
+     * @param string $slug
      * @return $this
      */
     public function setSlug($slug);

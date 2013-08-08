@@ -46,7 +46,7 @@ class TagController extends Controller
         $tag = $tagService->getBySlug($slug);
 
         $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter($tagService->getFindByTagQuery($tag)));
-        $pagerfanta->setMaxPerPage($tagService->getItemsPerPage());
+        $pagerfanta->setMaxPerPage($tagService->getItemsCountPerPage());
 
         try {
             $pagerfanta->setCurrentPage($requst->query->get('page', 1));
