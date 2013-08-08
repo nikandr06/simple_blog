@@ -99,23 +99,4 @@ class ArticleRepository extends EntityRepository
 
         return $query->getSingleScalarResult();
     }
-
-    /**
-     * @param TagInterface $tag
-     * @return integer
-     *
-     * @todo возможность выбора по нескольким тэгам.
-     */
-    public function getCountByTag(TagInterface $tag)
-    {
-        $query = $this->_em->createQuery("
-            SELECT COUNT(a.id)
-            FROM {$this->_entityName} AS a
-            JOIN a.tags AS t
-            WHERE t = :tag
-            AND a.enabled = true
-        ")->setParameter('tag', $tag);
-
-        return $query->getSingleScalarResult();
-    }
 }

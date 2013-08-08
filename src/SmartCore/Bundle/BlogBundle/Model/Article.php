@@ -11,7 +11,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * @UniqueEntity(fields={"slug"}, message="Статья с таким сегментом URI уже существует.")
  */
-abstract class Article
+abstract class Article implements ArticleInterface
 {
     /**
      * @ORM\Id

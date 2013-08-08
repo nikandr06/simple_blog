@@ -2,6 +2,8 @@
 
 namespace SmartCore\Bundle\BlogBundle\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 trait TagTrait
 {
     /**
@@ -10,7 +12,8 @@ trait TagTrait
      *      joinColumns={@ORM\JoinColumn(name="article_id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id")}
      * )
-     * @var \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @var TagInterface[]|ArrayCollection|null
      */
     protected $tags;
 
@@ -22,6 +25,7 @@ trait TagTrait
     {
         if (!$this->tags->contains($tag)) {
             $this->tags->add($tag);
+            //$tag->increment();
         }
 
         return $this;
@@ -35,24 +39,35 @@ trait TagTrait
     {
         if ($this->tags->contains($tag)) {
             $this->tags->removeElement($tag);
+            //$tag->decrement();
         }
 
         return $this;
     }
 
     /**
-     * @param \Doctrine\Common\Collections\ArrayCollection $tags
+     * @param TagInterface[]|ArrayCollection $tags
      * @return $this
      */
     public function setTags($tags)
     {
+        /*
+        foreach ($this->tags as $tag) {
+            $tag->decrement();
+        }
+
+        foreach ($tags as $tagNew) {
+            $tagNew->increment();
+        }
+        */
+
         $this->tags = $tags;
 
         return $this;
     }
 
     /**
-     * @return Tag[]
+     * @return Tag[]|ArrayCollection
      */
     public function getTags()
     {

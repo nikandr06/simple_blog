@@ -2,7 +2,7 @@
 
 namespace SmartCore\Bundle\BlogBundle\Model;
 
-interface  ArticleInterface
+interface ArticleInterface
 {
     /**
      * @return integer

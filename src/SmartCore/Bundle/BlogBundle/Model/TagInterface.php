@@ -5,6 +5,16 @@ namespace SmartCore\Bundle\BlogBundle\Model;
 interface TagInterface
 {
     /**
+     * @return $this
+     */
+    public function increment();
+
+    /**
+     * @return $this
+     */
+    public function decrement();
+
+    /**
      * @return integer
      */
     public function getId();
