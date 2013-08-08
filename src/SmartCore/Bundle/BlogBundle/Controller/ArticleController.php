@@ -79,6 +79,7 @@ class ArticleController extends Controller
     public function newAction(Request $request)
     {
         $article = new Article();
+//      Андрею - закомментированный код ниже - из админки на Симфони, сравни с кодом Артема.
 //        $form = $this->createForm(new ServiceType(), $service);
         $form = $this->createForm(new ArticleFormType(get_class($article)), $article);
 
@@ -120,3 +121,4 @@ class ArticleController extends Controller
     }
 
 }
+

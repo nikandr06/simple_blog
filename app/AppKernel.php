@@ -30,6 +30,7 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Sonata\IntlBundle\SonataIntlBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+            new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
             new SmartCore\Bundle\HtmlBundle\HtmlBundle(),
             new SmartCore\Bundle\BlogBundle\SmartBlogBundle(),
             new Dmitxe\SiteBundle\DmitxeSiteBundle(),
@@ -77,3 +78,4 @@ class AppKernel extends Kernel
         return $this->rootDir.'/../var/logs';
     }
 }
+

@@ -34,7 +34,9 @@
         "dropbox-php/dropbox-php": "dev-master",
         "sonata-project/intl-bundle": "dev-master",
         "white-october/pagerfanta-bundle": "dev-master",
-        "smart-core/html-bundle": "dev-master"
+        "smart-core/html-bundle": "dev-master",
+        "stfalcon/tinymce-bundle": "dev-master",
+        "helios-ag/fm-elfinder-bundle": "1.2"
     },
     "scripts": {
         "post-install-cmd": [

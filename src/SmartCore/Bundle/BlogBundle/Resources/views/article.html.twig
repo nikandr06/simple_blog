@@ -20,7 +20,7 @@
     {% if is_granted('ROLE_BLOGGER') %}
         <hr />
         <p>
-        <a href="{{ path('smart_blog_article_edit', {'id': article.id}) }}"><span class="btn">Редактирование</span></a>
+        <a href="{{ path('smart_blog_article_edit', {'id': article.id}) }}" class="btn">Редактирование</a>
         </p>
     {% endif %}
 

@@ -23,7 +23,12 @@ class ArticleFormType extends AbstractType
             ->add('title')
             ->add('slug')
             ->add('annotation')
-            ->add('text')
+            ->add('text', 'textarea', array(
+                'attr' => array(
+                    'class' => 'tinymce',
+                    'data-theme' => 'bbcode' // Skip it if you want to use default theme
+                ))
+            )
             ->add('description')
             ->add('keywords')
             ->add('tags', null, ['expanded' => true])
@@ -42,3 +47,4 @@ class ArticleFormType extends AbstractType
         return 'smart_article';
     }
 }
+

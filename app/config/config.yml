@@ -98,3 +98,7 @@ services:
     twig_extension.intl:
         class: Twig_Extensions_Extension_Intl
         tags: [{ name: 'twig.extension' }]
+
+stfalcon_tinymce:
+    mode: "textareas"
+    theme: "advanced"
