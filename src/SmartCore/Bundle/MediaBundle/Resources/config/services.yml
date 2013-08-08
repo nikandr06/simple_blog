@@ -1,0 +1,11 @@
+parameters:
+#    smart_media.example.class: SmartCore\Bundle\MediaBundle\Example
+
+services:
+#    smart_media.example:
+#        class: %smart_media.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    smart_media:
+        class: SmartCore\Bundle\MediaBundle\Service\MediaService
+        arguments: []

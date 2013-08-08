@@ -1,0 +1,30 @@
+
+<form method="post" action="{{ path("fos_user_security_check") }}" accept-charset="UTF-8">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+    <input style="margin-bottom: 15px;" type="text" placeholder="Логин" id="username" name="_username" />
+    <input style="margin-bottom: 15px;" type="password" placeholder="Пароль" id="password" name="_password" />
+    <div>
+        <input style="float: left; margin-right: 10px;" type="checkbox" name="remember-me" id="remember-me" value="1" />
+        <label class="string optional" for="remember-me"> Запомнить меня</label>
+    </div>
+    <input class="btn btn-primary btn-block" type="submit" id="sign-in" name="_submit" value="Войти">
+</form>
+
+{#
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    <img src="/img/login_nail.png" alt="" />
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+    <label for="username">Логин</label>
+    <br />
+
+    <input type="password" id="password" name="_password" required="required" />
+    <label for="password">Пароль</label>
+    <br />
+
+    <input type="submit" id="_submit" name="_submit" value="Войти" />
+    <a href="/password/request">Восстановить пароль</a>
+</form>
+#}

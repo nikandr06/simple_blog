@@ -20,7 +20,24 @@ class AppKernel extends Kernel
             //new JMS\DiExtraBundle\JMSDiExtraBundle($this), "jms/di-extra-bundle": "1.3.*"
             //new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(), "jms/security-extra-bundle": "1.4.*",
             new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
+            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
+            new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
+            new Vich\UploaderBundle\VichUploaderBundle(),
+            new Sonata\IntlBundle\SonataIntlBundle(),
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Acme\HelloBundle\AcmeHelloBundle(),
+            new SmartCore\Bundle\HtmlBundle\HtmlBundle(),
+            new SmartCore\Bundle\BlogBundle\SmartBlogBundle(),
+            new SimpleBlog\SiteBundle\SimpleBlogSiteBundle(),
+            new SimpleBlog\UserBundle\SimpleBlogUserBundle(),
+            new SimpleBlog\BlogBundle\SimpleBlogBlogBundle(),
+            new SimpleBlog\FixturesBundle\SimpleBlogFixturesBundle(),
+            new SmartCore\Bundle\MediaBundle\SmartMediaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

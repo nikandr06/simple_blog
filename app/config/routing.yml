@@ -1,4 +1,18 @@
 acme_hello:
     resource: "@AcmeHelloBundle/Resources/config/routing.yml"
     prefix:   /
+smart_media:
+    resource: "@SmartMediaBundle/Resources/config/routing.yml"
+    prefix:   /
 
+simpleblog_site:
+    resource: "@SimpleBlogSiteBundle/Resources/config/routing.yml"
+    prefix:   /
+
+simpleblog_blog:
+    resource: "@SimpleBlogBlogBundle/Resources/config/routing.yml"
+    prefix:   /blog/
+
+simpleblog_user:
+    resource: "@SimpleBlogUserBundle/Resources/config/routing.yml"
+    prefix:   /

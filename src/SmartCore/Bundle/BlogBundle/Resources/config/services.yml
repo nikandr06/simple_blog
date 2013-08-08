@@ -1,0 +1,11 @@
+parameters:
+#    smart_blog.example.class: SmartCore\Bundle\BlogBundle\Example
+
+services:
+#    smart_blog.example:
+#        class: %smart_blog.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    smart_blog:
+        class: SmartCore\Bundle\BlogBundle\Service\BlogService
+        arguments: [@doctrine.orm.default_entity_manager]
