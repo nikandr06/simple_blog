@@ -18,8 +18,8 @@ class LoadUserData extends ContainerAware implements FixtureInterface, OrderedFi
     {
         $encoder = $this->container->get('security.encoder_factory')->getEncoder(new User());
 
-        $group_team = new Group('team', ['ROLE_TEAM']);
-        $manager->persist($group_team);
+        $group_blogger = new Group('blogger', ['ROLE_BLOGGER']);
+        $manager->persist($group_blogger);
 
         $group_admin = new Group('admin', ['ROLE_ADMIN']);
         $manager->persist($group_admin);
@@ -37,7 +37,7 @@ class LoadUserData extends ContainerAware implements FixtureInterface, OrderedFi
             ->setPassword($encoder->encodePassword('123', $user->getSalt()))
             ->setEmail('digi@mail.ru')
             ->setEnabled(true) // @todo убрать на продакшине.
-            ->addGroup($group_team);
+            ->addGroup($group_admin);
         $manager->persist($user);
 
         $manager->flush();

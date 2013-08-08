@@ -3,8 +3,8 @@ security:
         FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
-        ROLE_TEAM:        ROLE_USER
-        ROLE_ADMIN:       [ROLE_USER, ROLE_TEAM]
+        ROLE_BLOGGER:     ROLE_USER
+        ROLE_ADMIN:       [ROLE_USER, ROLE_BLOGGER]
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     providers:
@@ -25,3 +25,5 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/blog/new/, roles: ROLE_BLOGGER }
+        - { path: ^/blog/edit/, roles: ROLE_BLOGGER }

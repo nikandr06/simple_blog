@@ -1,0 +1,10 @@
+{% extends 'SmartBlogBundle::layout.html.twig' %}
+
+{% block smart_blog_content %}
+
+    <form method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <button type="submit" name="update" class="btn btn-primary">{{ 'Create'|trans }}</button>
+    </form>
+
+{% endblock smart_blog_content %}
