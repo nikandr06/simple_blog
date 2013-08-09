@@ -27,3 +27,5 @@ security:
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/blog/new/, roles: ROLE_BLOGGER }
         - { path: ^/blog/edit/, roles: ROLE_BLOGGER }
+        - { path: ^/efconnect, role: ROLE_BLOGGER }
+        - { path: ^/elfinder, role: ROLE_BLOGGER }

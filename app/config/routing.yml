@@ -13,3 +13,6 @@ dmitxe_blog:
 
 dmitxe_user:
     resource: "@DmitxeUserBundle/Resources/config/routing.yml"
+
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"

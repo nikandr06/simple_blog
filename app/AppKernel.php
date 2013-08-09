@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new Sonata\IntlBundle\SonataIntlBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
+            new FM\ElfinderBundle\FMElfinderBundle(),
             new SmartCore\Bundle\HtmlBundle\HtmlBundle(),
             new SmartCore\Bundle\BlogBundle\SmartBlogBundle(),
             new Dmitxe\SiteBundle\DmitxeSiteBundle(),

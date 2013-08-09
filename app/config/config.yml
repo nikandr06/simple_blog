@@ -94,15 +94,33 @@ stfalcon_tinymce:
     theme:
         simple:
             theme: 'modern'
+            file_browser_callback : 'elFinderBrowser'
         advanced:
-             plugins:
+            file_browser_callback : 'elFinderBrowser'
+            plugins:
                  - "advlist autolink lists link image charmap print preview hr anchor pagebreak"
                  - "searchreplace wordcount visualblocks visualchars code fullscreen"
                  - "insertdatetime media nonbreaking save table contextmenu directionality"
                  - "emoticons template paste textcolor"
-             toolbar1: "insertfile undo redo | styleselect | bold italic | fontselect fontsizeselect | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
-             toolbar2: "print preview media | forecolor backcolor emoticons | stfalcon | example"
-             image_advtab: true
+            toolbar1: "insertfile undo redo | styleselect | bold italic | fontselect fontsizeselect | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+            toolbar2: "print preview media | forecolor backcolor emoticons | stfalcon | example"
+            image_advtab: true
+
+fm_elfinder:
+    locale: %locale%
+    editor: tinymce
+    tinymce_popup_path: "asset[bundles/stfalcontinymce/vendor/tiny_mce/tiny_mce_popup.js]"
+    showhidden: false # defaults to false
+    fullscreen: true # defaults true, applies to simple and ckeditor editors
+    connector:
+        debug: false # defaults to false
+        roots:       # at least one root must be defined
+            uploads:
+                driver: LocalFileSystem
+                path: uploads
+                upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
+                upload_deny: ['all']
+                upload_max_size: 2M
 
 vich_uploader:
     db_driver: orm
