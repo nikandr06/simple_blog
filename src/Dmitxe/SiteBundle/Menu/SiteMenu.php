@@ -24,7 +24,9 @@ class SiteMenu extends ContainerAware
 
         $menu->addChild('Homepage', ['route' => 'dmitxe_site_index']);
         $menu->addChild('Blog', ['route' => 'smart_blog_index']);
-        $menu->addChild('New Post', ['route' => 'smart_blog_article_new']);
+        if (true === $this->container->get('security.context')->isGranted('ROLE_BLOGGER')) {
+            $menu->addChild('Create Article', ['route' => 'smart_blog_article_new']);
+        }
 
         return $menu;
     }
