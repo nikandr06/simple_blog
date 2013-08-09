@@ -5,12 +5,12 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block javascripts %}
+ <!--           <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"  type="text/javascript"></script>-->
+        {% endblock %}
     </head>
     <body>
 
-    {{ tinymce_init() }}
-
     {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
     </body>
 </html>

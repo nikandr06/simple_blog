@@ -2,12 +2,58 @@
 
 {% block smart_blog_content %}
 
-    {{ tinymce_init() }}
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
 
-    <form method="post" {{ form_enctype(form) }}>
-        {{ form_widget(form) }}
-        <button type="submit" name="update" class="btn btn-primary">{{ 'Save'|trans }}</button>
-    </form>
+    <div>
+        {{ form_label(form.title) }}
+        {{ form_errors(form.title) }}
+        {{ form_widget(form.title) }}
+    </div>
+
+    <div>
+        {{ form_label(form.slug) }}
+        {{ form_errors(form.slug) }}
+        {{ form_widget(form.slug) }}
+    </div>
+
+    <div>
+        {{ form_label(form.annotation) }}
+        {{ form_errors(form.annotation) }}
+        {{ form_widget(form.annotation) }}
+    </div>
+
+    <div>
+        {{ form_label(form.text) }}
+        {{ form_errors(form.text) }}
+        {{ form_widget(form.text, {'attr': {'class': 'tinymce', 'data-theme' : 'advanced'}}) }}
+    </div>
+
+    <div>
+        {{ form_label(form.description) }}
+        {{ form_errors(form.description) }}
+        {{ form_widget(form.description) }}
+    </div>
+
+    <div>
+        {{ form_label(form.keywords) }}
+        {{ form_errors(form.keywords) }}
+        {{ form_widget(form.keywords) }}
+    </div>
+
+    <div>
+        {{ form_label(form.tags) }}
+        {{ form_errors(form.tags) }}
+        {{ form_widget(form.tags) }}
+    </div>
+
+    <button type="submit" name="update" class="btn btn-primary">{{ 'Save'|trans }}</button>
+
+    {{ form_end(form) }}
 
 {% endblock smart_blog_content %}
 
+{% block body_js %}
+    {{ parent() }}
+    {{ tinymce_init() }}
+{% endblock body_js %}
