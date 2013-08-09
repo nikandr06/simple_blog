@@ -8,19 +8,19 @@
     <div>
         {{ form_label(form.title) }}
         {{ form_errors(form.title) }}
-        {{ form_widget(form.title) }}
+        {{ form_widget(form.title, {'attr': {'class': 'span9'}}) }}
     </div>
 
     <div>
         {{ form_label(form.slug) }}
         {{ form_errors(form.slug) }}
-        {{ form_widget(form.slug) }}
+        {{ form_widget(form.slug, {'attr': {'class': 'span9'}}) }}
     </div>
 
     <div>
         {{ form_label(form.annotation) }}
         {{ form_errors(form.annotation) }}
-        {{ form_widget(form.annotation) }}
+        {{ form_widget(form.annotation, {'attr': {'class': 'span12'}}) }}
     </div>
 
     <div>
@@ -32,13 +32,13 @@
     <div>
         {{ form_label(form.description) }}
         {{ form_errors(form.description) }}
-        {{ form_widget(form.description) }}
+        {{ form_widget(form.description, {'attr': {'class': 'span12'}}) }}
     </div>
 
     <div>
         {{ form_label(form.keywords) }}
         {{ form_errors(form.keywords) }}
-        {{ form_widget(form.keywords) }}
+        {{ form_widget(form.keywords, {'attr': {'class': 'span9'}}) }}
     </div>
 
     <div>

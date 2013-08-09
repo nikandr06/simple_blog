@@ -23,33 +23,8 @@ class SiteMenu extends ContainerAware
         }
 
         $menu->addChild('Homepage', ['route' => 'dmitxe_site_index']);
-        $title = 'Blog';
-
-        if ($this->container->get('security.context')->isGranted('ROLE_BLOGGER')) {
-            $blogSubmenu = $menu->addChild($title, [
-                'route'      => 'smart_blog_index',
-                'attributes' => ['class' => 'dropdown']
-            ]);
-
-            $blogSubmenu->setLinkAttributes([
-                    'class'       => 'dropdown-toggle',
-                    'data-toggle' => 'dropdown',
-                    'role'        => 'button',
-                    'id'          => 'mmi_finance'
-                ])
-                //->setLabel($title . ' <b class="caret"></b>')->setExtra('safe_label', true)
-                //->setLabel($title, true)
-                ->setChildrenAttributes([
-                    'class'           => 'dropdown-menu',
-                    'role'            => 'menu',
-                    'aria-labelledby' => 'mmi_finance']);
-
-            $blogSubmenu->addChild('Все записи',    ['route' => 'smart_blog_index']);
-            $blogSubmenu->addChild(null,            ['attributes' => ['class' => 'divider']]);
-            $blogSubmenu->addChild('Новая запись',  ['route' => 'smart_blog_article_new']);
-        } else {
-            $menu->addChild($title, ['route' => 'smart_blog_index']);
-        }
+        $menu->addChild('Blog', ['route' => 'smart_blog_index']);
+        $menu->addChild('New Post', ['route' => 'smart_blog_article_new']);
 
         return $menu;
     }
