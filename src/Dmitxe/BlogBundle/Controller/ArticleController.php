@@ -9,6 +9,10 @@ use SmartCore\Bundle\BlogBundle\Form\Type\ArticleFormType;
 class ArticleController extends BaseArticleController
 {
     /**
+     * Метод createAction в данном случае перегражается только для того, чтобы вставить $article->setAuthor($this->getUser());
+     *
+     * @todo сделать события в формах и через него добавлять пользователя.
+     *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
