@@ -30,20 +30,26 @@ class CategoryController extends Controller
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $this->getDoctrine()->getManager();
 
-        $categoriesRepo = $em->getRepository('DmitxeBlogBundle:Category'); // @todo покидывать имя класса категорий.
+        $categoriesRepo = $em->getRepository('DmitxeBlogBundle:Category'); // @todo прокидывать имя класса категорий.
 
         $requestedCategories = [];
         $parent = null;
         foreach (explode('/', $slug) as $categoryName) {
+
+            if (strlen($categoryName) == 0) {
+                break;
+            }
+
             $category = $categoriesRepo->findOneBy([
                 'parent' => $parent,
                 'slug'   => $categoryName,
             ]);
 
-            // @todo проверку на некорректный запрос.
             if ($category) {
                 $requestedCategories[] = $category;
                 $parent = $category;
+            } else {
+                throw $this->createNotFoundException();
             }
         }
 
