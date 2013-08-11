@@ -68,6 +68,7 @@ class ArticleController extends Controller
      */
     public function pageAction($page = 1)
     {
+        /** @var \SmartCore\Bundle\BlogBundle\Service\ArticleService $articleService */
         $articleService = $this->get($this->articleServiceName);
 
         $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter($articleService->getFindByCategoryQuery()));
@@ -91,6 +92,7 @@ class ArticleController extends Controller
      */
     public function editAction(Request $request, $id)
     {
+        /** @var \SmartCore\Bundle\BlogBundle\Service\ArticleService $articleService */
         $article = $this->get($this->articleServiceName)->get($id);
 
         $form = $this->createForm(new ArticleFormType(get_class($article)), $article);
@@ -122,6 +124,7 @@ class ArticleController extends Controller
      */
     public function createAction(Request $request)
     {
+        /** @var \SmartCore\Bundle\BlogBundle\Service\ArticleService $articleService */
         $article = $this->get($this->articleServiceName)->create();
 
         $form = $this->createForm(new ArticleFormType(get_class($article)), $article);
