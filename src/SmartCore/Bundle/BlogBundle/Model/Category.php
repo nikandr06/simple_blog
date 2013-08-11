@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * @UniqueEntity(fields={"uri_part"}, message="Категория с таким сегментом URI уже существует.")
+ * @UniqueEntity(fields={"slug", "parent"}, message="В каждой категории должен быть уникальный сегмент URI.")
  */
 abstract class Category implements CategoryInterface
 {
@@ -19,7 +19,7 @@ abstract class Category implements CategoryInterface
     protected $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Category")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children", cascade={"persist"})
      * @ORM\JoinColumn(name="pid")
      *
      * @var Category
@@ -85,25 +85,6 @@ abstract class Category implements CategoryInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param string $name
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
