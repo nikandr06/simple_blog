@@ -41,6 +41,13 @@ class LoadBlogData extends ContainerAware implements FixtureInterface, OrderedFi
             ->setParent($category_prog)
         ;
 
+        $category_jquery = new Category();
+        $category_jquery
+            ->setTitle('jQuery')
+            ->setSlug('jquery')
+            ->setParent($category_js)
+        ;
+
         $category_os = new Category();
         $category_os
             ->setTitle('Операционные системы')
@@ -81,6 +88,7 @@ class LoadBlogData extends ContainerAware implements FixtureInterface, OrderedFi
             ->setSlug('third')
             ->setAnnotation('Аннотация для третьей статьи.')
             ->setText('Опросная анкета упорядочивает из ряда вон выходящий портрет потребителя, учитывая результат предыдущих медиа-кампаний. Спонсорство, в рамках сегодняшних воззрений, однородно стабилизирует принцип восприятия, используя опыт предыдущих кампаний. Узнавание бренда осмысленно переворачивает повторный контакт, признавая определенные рыночные тенденции. Стимулирование сбыта амбивалентно.')
+            ->setCategory($category_jquery)
             ->setAuthor($user)
         ;
         $manager->persist($article);
@@ -106,6 +114,15 @@ class LoadBlogData extends ContainerAware implements FixtureInterface, OrderedFi
             ->setCategory($category_php)
             ->addTag($tag2)
             ->addTag($tag4)
+        ;
+        $manager->persist($article);
+
+        $article = new Article();
+        $article->setTitle('Шестая статья')
+            ->setSlug('sixth')
+            ->setAnnotation('Аннотация для шестой статьи.')
+            ->setText('Взаимодействие корпорации и клиента амбивалентно. Агентская комиссия специфицирует мониторинг активности, используя опыт предыдущих кампаний. Ассортиментная политика предприятия развивает стратегический маркетинг, используя опыт предыдущих кампаний. Более того, взаимодействие корпорации и клиента искажает бренд, расширяя долю рынка.')
+            ->setAuthor($user)
         ;
         $manager->persist($article);
 

@@ -26,6 +26,10 @@
                     <li>Фабрики для форм блога.</li>
                 </ul>
 
+                <h2>Категории блога:</h2>
+
+                {{ knp_menu_render('SmartBlogBundle:CategoryMenu:full', {'currentClass': 'active'}) }}
+
                 <h2>Тэги блога:</h2>
 
                 {{ render(controller('SmartBlogBundle:Tag:cloud')) }}

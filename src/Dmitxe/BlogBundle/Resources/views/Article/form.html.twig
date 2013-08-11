@@ -44,7 +44,14 @@
 </div>
 
 <div class="control-group">
+    {{ form_label(form.category) }}
+    {{ form_errors(form.category) }}
+    {{ form_widget(form.category, {'attr': {'class': 'input-block-level'} }) }}
+</div>
+
+<div class="control-group">
     {{ form_label(form.tags) }}
     {{ form_errors(form.tags) }}
     {{ form_widget(form.tags) }}
 </div>
+

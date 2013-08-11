@@ -1,20 +1,32 @@
+{#{% extends 'SmartBlogBundle:Article:list.html.twig' %}#}
 {% extends 'SmartBlogBundle::layout.html.twig' %}
-
-{% block html_head_title %}
-    {{ parent() }}
-    {% if pagerfanta.currentPage > 1%}(Страница: {{ pagerfanta.currentPage }}){% endif %}
-{% endblock html_head_title %}
 
 {% block smart_blog_content %}
 
+    <h1>Статьи в категории:
+        {% for category in categories %}
+            <a href="{{ path('smart_blog_category', {'slug': category.slugFull}) }}">{{ category }}</a> /
+        {% endfor %}
+    </h1>
+
+    {% set childenCategories = lastCategory.children %}
+
+    {% if childenCategories|length %}
+        <h3>Вложенные категории:</h3>
+        <ul>
+        {% for category in childenCategories %}
+            <li><a href="{{ path('smart_blog_category', {'slug': category.slugFull}) }}">{{ category }}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    <hr />
+
     {% block smart_blog_content_articles %}
-        {% for article in pagerfanta.currentPageResults %}
+        {% for article in articles %}
             <h2><a href="{{ path('smart_blog_article', {'slug': article.slug}) }}">{{ article.title }}</a></h2>
 
-            <p>
-                <i class="icon-calendar"></i> {{ article.createdAt | localizeddate('full') }}
-                , написал <i class="icon-user"></i> <a href="#">{{ article.author }}</a>
-            </p>
+            <p><i class="icon-calendar"></i> {{ article.createdAt | localizeddate('full') }}</p>
 
             <p>{{ article.annotation }}</p>
 
@@ -33,15 +45,5 @@
             <hr/>
         {% endfor %}
     {% endblock smart_blog_content_articles %}
-
-    {% block smart_blog_articles_paginator %}
-        {% if pagerfanta.haveToPaginate %}
-            {{ pagerfanta(pagerfanta, 'twitter_bootstrap_translated', {
-                    'routeName': 'smart_blog_page',
-                    'css_container_class': 'pagination pagination-centered',
-                })
-            }}
-        {% endif %}
-    {% endblock smart_blog_articles_paginator %}
 
 {% endblock smart_blog_content %}
