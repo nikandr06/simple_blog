@@ -1,11 +1,3 @@
 smart_blog_admin_articles_list:
     path: /article/
-    defaults: { _controller: SmartBlogBundle:Default:index }
-
-smart_blog_admin_article_edit:
-    path: /article/{id}/edit/
-    defaults: { _controller: SmartBlogBundle:Article:edit }
-
-smart_blog_admin_article_create:
-    path: /article/create/
-    defaults: { _controller: SmartBlogBundle:Default:index }
+    defaults: { _controller: SmartBlogBundle:Admin/Article:index }
