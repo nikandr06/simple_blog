@@ -48,7 +48,8 @@ class TagController extends Controller
     {
         $this->tagServiceName   = 'smart_blog.tag';
         $this->routeIndex       = 'smart_blog_tag_index';
-        $this->routeTag         = 'smart_blog_tag';
+        $this->routeAdminTag    = 'smart_blog_admin_tag';
+        $this->routeAdminTagEdit= 'smart_blog_admin_tag_edit';
         $this->bundleName       = 'SmartBlogBundle';
     }
 
@@ -60,7 +61,7 @@ class TagController extends Controller
         /** @var \SmartCore\Bundle\BlogBundle\Service\TagService $tagService */
         $tagService = $this->get($this->tagServiceName);
 
-        $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter($tagService->getCloud($this->routeTag)));
+        $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter($tagService->getCloud($this->routeAdminTag)));
         $pagerfanta->setMaxPerPage($tagService->getItemsCountPerPage());
 
  //       ld($pagerfanta->getMaxPerPage());
@@ -68,12 +69,12 @@ class TagController extends Controller
         try {
             $pagerfanta->setCurrentPage($requst->query->get('page', 1));
         } catch (NotValidCurrentPageException $e) {
-            return $this->redirect($this->generateUrl($this->routeIndex));
+            return $this->redirect($this->generateUrl($this->routeAdminTag));
         }
 
 //        'cloud' => $tagService->getCloud($this->routeTag),
         return $this->render($this->bundleName . ':Admin/Tag:list.html.twig', [
-            'tags' => $tagService->getCloud($this->routeTag),
+            'tags' => $tagService->getCloud($this->routeAdminTag),
             'pagerfanta' => $pagerfanta,
         ]);
     }

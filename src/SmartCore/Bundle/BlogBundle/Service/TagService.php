@@ -171,14 +171,14 @@ class TagService extends AbstractBlogService
     public function update(TagInterface $tag)
     {
         $event = new FilterArticleEvent($tag);
-        $this->eventDispatcher->dispatch(SmartBlogEvents::ARTICLE_PRE_UPDATE, $event);
+        $this->eventDispatcher->dispatch(SmartBlogEvents::TAG_PRE_UPDATE, $event);
 
         // @todo убрать в мэнеджер.
         $this->em->persist($tag);
         $this->em->flush($tag);
 
         $event = new FilterTagEvent($tag);
-        $this->eventDispatcher->dispatch(SmartBlogEvents::ARTICLE_POST_UPDATE, $event);
+        $this->eventDispatcher->dispatch(SmartBlogEvents::TAG_POST_UPDATE, $event);
     }
 
 }
