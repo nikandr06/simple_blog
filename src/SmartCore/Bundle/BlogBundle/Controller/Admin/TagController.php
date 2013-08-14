@@ -144,31 +144,4 @@ class TagController extends Controller
             'form' => $form->createView(),
         ]);
     }
-
-    /**
-     * @param Request $requst
-     * @param string $slug
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
-     */
-    public function showArticlesAction(Request $requst, $slug)
-    {
-        /** @var \SmartCore\Bundle\BlogBundle\Service\TagService $tagService */
-        $tagService = $this->get($this->tagServiceName);
-
-        $tag = $tagService->getBySlug($slug);
-
-        $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter($tagService->getFindByTagQuery($tag)));
-        $pagerfanta->setMaxPerPage($tagService->getItemsCountPerPage());
-
-        try {
-            $pagerfanta->setCurrentPage($requst->query->get('page', 1));
-        } catch (NotValidCurrentPageException $e) {
-            return $this->redirect($this->generateUrl($this->routeIndex));
-        }
-
-        return $this->render($this->bundleName . ':Admin/Tag:list_by_tag.html.twig', [
-            'pagerfanta' => $pagerfanta,
-            'tag'        => $tag,
-        ]);
-    }
 }
