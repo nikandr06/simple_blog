@@ -129,11 +129,11 @@ class TagController extends Controller
             $form->submit($request);
 
             if ($form->isValid()) {
-                $article = $form->getData();
+                $tag = $form->getData();
 
                 /** @var \Doctrine\ORM\EntityManager $em */
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($article);
+                $em->persist($tag);
                 $em->flush();
 
                 return $this->redirect($this->generateUrl($this->routeAdminTag));
