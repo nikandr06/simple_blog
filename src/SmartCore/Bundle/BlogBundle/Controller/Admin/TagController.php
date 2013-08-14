@@ -146,17 +146,6 @@ class TagController extends Controller
     }
 
     /**
-     * @return Response
-     */
-    public function cloudAction()
-    {
-        /** @var \SmartCore\Bundle\BlogBundle\Service\TagService $tagService */
-        $tagService = $this->get($this->tagServiceName);
-
-        return new Response($tagService->getCloudZend($this->routeTag)->render());
-    }
-
-    /**
      * @param Request $requst
      * @param string $slug
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
