@@ -40,15 +40,5 @@ interface TagInterface
      * @return $this
      */
     public function setTitle($title);
-
-    /**
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt();
-
-    /**
-     * @return $this
-     */
-    public function setUpdated();
 }
 

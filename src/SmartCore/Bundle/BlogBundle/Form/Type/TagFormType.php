@@ -22,7 +22,6 @@ class TagFormType extends AbstractType
         $builder
             ->add('title')
             ->add('slug')
-            ->add('weight')
         ;
 
     }

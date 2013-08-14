@@ -99,8 +99,7 @@ class TagController extends Controller
 
             if ($form->isValid()) {
                 $tag = $form->getData();
-                $tag->setUpdated();
-
+ 
                 /** @var \Doctrine\ORM\EntityManager $em */
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($tag);
