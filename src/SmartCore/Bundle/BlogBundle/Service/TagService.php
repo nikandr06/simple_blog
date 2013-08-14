@@ -3,9 +3,12 @@
 namespace SmartCore\Bundle\BlogBundle\Service;
 
 use Doctrine\ORM\EntityRepository;
+use SmartCore\Bundle\BlogBundle\Event\FilterTagEvent;
 use SmartCore\Bundle\BlogBundle\Model\TagInterface;
 use SmartCore\Bundle\BlogBundle\Repository\ArticleRepositoryInterface;
 use Symfony\Component\Routing\RouterInterface;
+use SmartCore\Bundle\BlogBundle\SmartBlogEvents;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Zend\Tag\Cloud;
 
 class TagService extends AbstractBlogService
@@ -31,6 +34,15 @@ class TagService extends AbstractBlogService
         $this->router       = $router;
         $this->tagsRepo     = $tagsRepo;
         $this->setItemsCountPerPage($itemsPerPage);
+    }
+
+    /**
+     * @param int $id
+     * @return TagInterface|null
+     */
+    public function get($id)
+    {
+        return $this->tagsRepo->find($id);
     }
 
     /**
@@ -135,4 +147,38 @@ class TagService extends AbstractBlogService
             ]
         ]);
     }
+
+    /**
+     * @return TagInterface
+     */
+    public function create()
+    {
+        $class = $this->tagsRepo->getClassName();
+
+        $tag = new $class('slug');
+
+        $event = new FilterTagEvent($tag);
+        $this->eventDispatcher->dispatch(SmartBlogEvents::TAG_CREATE, $event);
+
+        return $tag;
+    }
+
+    /**
+     * @param TagInterface $tag
+     *
+     * @todo выделить методы create, update, detele в "article manager".
+     */
+    public function update(TagInterface $tag)
+    {
+        $event = new FilterArticleEvent($tag);
+        $this->eventDispatcher->dispatch(SmartBlogEvents::ARTICLE_PRE_UPDATE, $event);
+
+        // @todo убрать в мэнеджер.
+        $this->em->persist($tag);
+        $this->em->flush($tag);
+
+        $event = new FilterTagEvent($tag);
+        $this->eventDispatcher->dispatch(SmartBlogEvents::ARTICLE_POST_UPDATE, $event);
+    }
+
 }
