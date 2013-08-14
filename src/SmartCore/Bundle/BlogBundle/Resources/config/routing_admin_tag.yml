@@ -3,7 +3,7 @@ smart_blog_admin_tag:
     defaults: { _controller: SmartBlogBundle:Admin/Tag:index }
 
 smart_blog_admin_tag_edit:
-    path: /edit/{id}/
+    path: /{id}/
     defaults: { _controller: SmartBlogBundle:Admin/Tag:edit }
     requirements:
         id: \d+
