@@ -157,8 +157,8 @@ class TagService extends AbstractBlogService
 
         $tag = new $class('slug');
 
-        $event = new FilterTagEvent($tag);
-        $this->eventDispatcher->dispatch(SmartBlogEvents::TAG_CREATE, $event);
+//        $event = new FilterTagEvent($tag);
+//        $this->eventDispatcher->dispatch(SmartBlogEvents::TAG_CREATE, $event);
 
         return $tag;
     }
