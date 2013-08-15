@@ -1,2 +1,2 @@
-Symfony Standard Edition
-========================
+Dmitry Xe Personal Site
+=======================
