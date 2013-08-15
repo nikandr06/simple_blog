@@ -181,4 +181,13 @@ class TagService extends AbstractBlogService
         $this->eventDispatcher->dispatch(SmartBlogEvents::TAG_POST_UPDATE, $event);
     }
 
+    /**
+     * @return \Doctrine\ORM\Query
+     */
+    public function getFindAllQuery()
+    {
+        return $this->tagsRepo->getFindAllQuery();
+    }
+
+
 }

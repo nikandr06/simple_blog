@@ -61,7 +61,8 @@ class TagController extends Controller
         /** @var \SmartCore\Bundle\BlogBundle\Service\TagService $tagService */
         $tagService = $this->get($this->tagServiceName);
 
-        $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter($tagService->getCloud($this->routeAdminTag)));
+//        $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter($tagService->getCloud($this->routeAdminTag)));
+        $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter($tagService->getFindAllQuery()));
         $pagerfanta->setMaxPerPage($tagService->getItemsCountPerPage());
 
  //       ld($pagerfanta->getMaxPerPage());

@@ -45,4 +45,18 @@ class TagRepository extends EntityRepository
 
         return $query->getSingleScalarResult();
     }
+
+    /**
+     * @return \Doctrine\ORM\Query
+     */
+    public function getFindAllQuery()
+    {
+        return $this->_em->createQuery("
+          SELECT tags
+          FROM {$this->_entityName} AS tags
+          ORDER BY tags.id DESC
+        ");
+    }
+
+
 }
