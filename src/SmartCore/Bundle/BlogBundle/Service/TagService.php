@@ -188,6 +188,4 @@ class TagService extends AbstractBlogService
     {
         return $this->tagsRepo->getFindAllQuery();
     }
-
-
 }

@@ -61,11 +61,8 @@ class TagController extends Controller
         /** @var \SmartCore\Bundle\BlogBundle\Service\TagService $tagService */
         $tagService = $this->get($this->tagServiceName);
 
-//        $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter($tagService->getCloud($this->routeAdminTag)));
         $pagerfanta = new Pagerfanta(new SimpleDoctrineORMAdapter($tagService->getFindAllQuery()));
         $pagerfanta->setMaxPerPage($tagService->getItemsCountPerPage());
-
- //       ld($pagerfanta->getMaxPerPage());
 
         try {
             $pagerfanta->setCurrentPage($requst->query->get('page', 1));
@@ -73,7 +70,6 @@ class TagController extends Controller
             return $this->redirect($this->generateUrl($this->routeAdminTag));
         }
 
-//        'cloud' => $tagService->getCloud($this->routeTag),
         return $this->render($this->bundleName . ':Admin/Tag:list.html.twig', [
             'tags' => $tagService->getCloud($this->routeAdminTag),
             'pagerfanta' => $pagerfanta,
