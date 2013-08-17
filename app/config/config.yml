@@ -152,6 +152,7 @@ vich_uploader:
 
 smart_blog:
     article_class: Dmitxe\BlogBundle\Entity\Article
+    category_class: Dmitxe\BlogBundle\Entity\Category
     tag_class: Dmitxe\BlogBundle\Entity\Tag
     items_per_page: 3
 

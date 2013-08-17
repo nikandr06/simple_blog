@@ -38,3 +38,17 @@ services:
         factory_service: doctrine
         factory_method:  getRepository
         arguments:       [%smart_blog.model.tag.class%]
+
+    smart_blog.categoryAdmin:
+        class: SmartCore\Bundle\BlogBundle\Service\AdminCategoryService
+        arguments:
+            - @doctrine.orm.default_entity_manager
+            - @smart_blog.category.repository
+            - @event_dispatcher
+            - %smart_blog.items_per_page%
+
+    smart_blog.category.repository:
+        class:           SmartCore\Bundle\BlogBundle\Repository\CategoryRepository
+        factory_service: doctrine
+        factory_method:  getRepository
+        arguments:       [%smart_blog.model.category.class%]

@@ -143,11 +143,12 @@ class ArticleController extends Controller
         $article = $articleService->create();
 
         $form = $this->createForm(new ArticleCreateFormType(get_class($article)), $article);
+        ld($_POST);
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
 
             if ($form->isValid()) {
-                $article = $form->getData();
+        //        $article = $form->getData();
                 $articleService->update($article);
 
                 return $this->redirect($this->generateUrl($this->routeArticle, ['slug' => $article->getSlug()] ));
